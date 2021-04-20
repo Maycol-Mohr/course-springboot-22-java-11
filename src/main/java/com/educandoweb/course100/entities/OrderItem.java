@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.educandoweb.course100.entities.pk.OrderItemPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -17,7 +18,7 @@ private static final long serialVersionUID = 1L;
 
 	
 	@EmbeddedId
-	private OrderItemPK id;
+	private OrderItemPK id = new OrderItemPK();
 	
 	private Integer quantity;
 	private Double price;
@@ -35,6 +36,8 @@ private static final long serialVersionUID = 1L;
 		this.price = price;
 	}
 	
+	
+	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
 	}
